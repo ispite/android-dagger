@@ -28,8 +28,4 @@ interface AppComponent {
 
     // Classes that can be injected by this Component
     fun inject(activity: MainActivity)
-    fun inject(activity: RegistrationActivity)
-    fun inject(fragment: EnterDetailsFragment)
-    fun inject(fragment: TermsAndConditionsFragment)
-
 }

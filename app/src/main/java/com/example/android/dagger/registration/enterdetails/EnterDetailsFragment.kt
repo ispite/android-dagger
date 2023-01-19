@@ -26,7 +26,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import com.example.android.dagger.MyApplication
 import com.example.android.dagger.R
 import com.example.android.dagger.registration.RegistrationActivity
 import com.example.android.dagger.registration.RegistrationViewModel
@@ -56,7 +55,7 @@ class EnterDetailsFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        (requireActivity().application as MyApplication).appComponent.inject(this)
+        (activity as RegistrationActivity).registrationComponent.inject(this)
     }
 
     override fun onCreateView(
