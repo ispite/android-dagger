@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * If the User is not registered, RegistrationActivity will be launched,
      * If the User is not logged in, LoginActivity will be launched,
-     * else carry on with MainActivity
+     * else carry on with MainActivity.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as MyApplication).appComponent.inject(this)
@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             setContentView(R.layout.activity_main)
-
             setupViews()
         }
     }

@@ -41,6 +41,8 @@ class EnterDetailsFragment : Fragment() {
      *
      * They could get combined but for the sake of the codelab, we're separating them so we have
      * different ViewModels with different lifecycles.
+     *
+     * @Inject annotated fields will be provided by Dagger
      */
     @Inject
     lateinit var registrationViewModel: RegistrationViewModel
@@ -55,6 +57,7 @@ class EnterDetailsFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
+        // Grabs the registrationComponent from the Activity and injects this Fragment
         (activity as RegistrationActivity).registrationComponent.inject(this)
     }
 
