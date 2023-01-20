@@ -16,6 +16,7 @@
 
 package com.example.android.dagger.user
 
+import com.example.android.dagger.di.RegistrationStorage
 import com.example.android.dagger.storage.Storage
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -31,17 +32,34 @@ private const val PASSWORD_SUFFIX = "password"
  */
 @Singleton
 class UserManager @Inject constructor(
-    private val storage: Storage,
+    @RegistrationStorage private val storage: Storage,
     // Since UserManager will be in charge of managing the UserComponent lifecycle,
     // it needs to know how to create instances of it
     private val userComponentFactory: UserComponent.Factory
 ) {
 
     /**
-    *  UserComponent is specific to a logged in user. Holds an instance of UserComponent.
-    *  This determines if the user is logged in or not, when the user logs in,
-    *  a new Component will be created. When the user logs out, this will be null.
-    */
+     * EXAMPLE OF annotations:
+     * // In a method
+     * class ClassDependingOnStorage(@RegistrationStorage private val storage: Storage) { ... }
+     *
+     * // As an injected field
+     * class ClassDependingOnStorage {
+     *
+     * @Inject
+     * @field:RegistrationStorage lateinit var storage: Storage
+     * }
+     *
+     * https://developer.android.com/codelabs/android-dagger#14
+     *
+     **/
+
+
+    /**
+     *  UserComponent is specific to a logged in user. Holds an instance of UserComponent.
+     *  This determines if the user is logged in or not, when the user logs in,
+     *  a new Component will be created. When the user logs out, this will be null.
+     */
     var userComponent: UserComponent? = null
         private set
 
